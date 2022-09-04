@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    --main-color: #AA98A9;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+.mainHeader{
+    background: var(--main-color);
+    color: white;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    font-size: 2.5rem;
+    place-items: center;
+}
+.add{
+    width: 5rem;
+    height: 5rem;
+    font-size: 2.5rem;
+    border-radius:50%;
+    color: var(--main-color);
+    background-color: white;
+    border: none;
+    transition: 0.5s ease-in-out;
+}
+.add:hover{
+color: white;
+border: 0.001rem solid white;
+background-color: var(--main-color);
+}
