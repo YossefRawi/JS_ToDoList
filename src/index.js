@@ -1,6 +1,8 @@
 import './style.css';
 import {logToDoList} from './log'
 import {createListItem} from './listUI'
+import {goToProjects,goToLists,OnLoad} from './projectListShuffle'
+
 
 
 export default (function page_UI() {
@@ -12,25 +14,39 @@ export default (function page_UI() {
     header.classList.add('header');
     header.innerText = 'ToDoList';
     //
+    const projectBtn = document.createElement('button');
+    projectBtn.classList.add('addproject');
+    projectBtn.innerText = 'Projects';
+    //
+    const listBtn = document.createElement('button');
+    listBtn.classList.add('addlist');
+    listBtn.innerText = 'List'
+    //
+
     const addBtn = document.createElement('button');
     addBtn.classList.add('add');
     addBtn.innerText = '+';
     //
-    header_main.append(header,addBtn);
+    header_main.append(header,projectBtn,listBtn,addBtn);
     //
     //create list
-    let list_content = document.querySelector('div');
+    let list_content = document.getElementById('list');
     list_content.classList.add('list');
     
     //
+    let project_content = document.getElementById('project')
+    project_content.classList.add('project')
+    //
     document.body.append(header_main,list_content);
     //
-    addBtn.addEventListener('click',() => {
-        createListItem('h')
-    })
+    addBtn.addEventListener('click',logToDoList)
+    //
+    listBtn.addEventListener('click',goToLists)
+    //
+    projectBtn.addEventListener('click',goToProjects)
 })()
 
-
+OnLoad();
 
 
     
