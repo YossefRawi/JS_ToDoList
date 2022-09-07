@@ -1,29 +1,28 @@
-import './style.css';
-import {logToDoList} from './log'
+
 import { format} from 'date-fns'
 
 
 
 
-let newDate = format(new Date(), 'dd / MMM / yyyy');
-
-let list_content = document.getElementById('list');
 
 
 
 
+    let list_content = document.getElementById('list');
 
 
 
 
 
-    export const createListItem = (header) =>{
+    export const createListItem = (header,getDesc,newDate) =>{
+    
     //create list Item
     let list_item = document.createElement('div');
     list_item.classList.add('listItem');
-    console.log(list_item)
+
     list_content.append(list_item);
 
+    console.log()
 
     //create item header
     let item_header = document.createElement('h3');
@@ -41,8 +40,8 @@ let list_content = document.getElementById('list');
     //Complete button
     let complete_btn = document.createElement('button');
     complete_btn.classList.add('completeBtn');
-    complete_btn.innerText = 'Low';
-    complete_btn.style.backgroundColor = 'green';
+    complete_btn.innerText = '✖';
+    complete_btn.style.backgroundColor = 'red';
     
     //
     
@@ -64,12 +63,20 @@ let list_content = document.getElementById('list');
     button_content.append(edit_btn,delete_btn,complete_btn);
     //
     //
+    //description
+    let descSetter = document.createElement('div');
+    descSetter.classList.add('descs')
+    descSetter.innerText = 'Description : ' + getDesc;
+    list_item.appendChild(descSetter)
     //
-
+    //
+    //date
     let dateSetter = document.createElement('div')
     dateSetter.classList.add('dates')
     dateSetter.innerText = "Due : " + newDate ;
     list_item.appendChild(dateSetter);
+
+    
 
 
     const btns_event = (() => {
@@ -85,10 +92,10 @@ let list_content = document.getElementById('list');
         });
         //
         complete_btn.addEventListener('click',() =>{
-            complete_btn.innerText = complete_btn.innerText =='Low' ? 'High' : 'Low';
-            if( complete_btn.innerText == 'Low'){
+            complete_btn.innerText = complete_btn.innerText =='✖' ? '✔' : '✖';
+            if( complete_btn.innerText == '✔'){
                 complete_btn.style.backgroundColor = 'green';
-            } else if ( complete_btn.innerText == 'High'){
+            } else if ( complete_btn.innerText == '✖'){
                 complete_btn.style.backgroundColor = 'red';
             }
         })
@@ -98,16 +105,18 @@ let list_content = document.getElementById('list');
     //
     //
     
+    
 
-        return {list_item};
+        return {header,getDesc};
 
     };
 
 
-createListItem('w')
+let newittem  =createListItem('w','asdasdasdfasdf',format(new Date(),'dd / MMM / yyyy'))
+let newittem_serial = JSON.stringify(newittem)
 
 
-
+localStorage.setItem('ToDo',newittem_serial)
 
     
 

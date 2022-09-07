@@ -2,9 +2,10 @@ import './style.css';
 import {logToDoList} from './log'
 import {createListItem} from './listUI'
 import {goToProjects,goToLists,OnLoad} from './projectListShuffle'
+import { SetFormUi } from './ProjectUI';
 
 
-
+//Loads the Main UI 
 export default (function page_UI() {
     //
     const header_main = document.createElement('div');
@@ -23,11 +24,7 @@ export default (function page_UI() {
     listBtn.innerText = 'List'
     //
 
-    const addBtn = document.createElement('button');
-    addBtn.classList.add('add');
-    addBtn.innerText = '+';
-    //
-    header_main.append(header,projectBtn,listBtn,addBtn);
+    header_main.append(header,projectBtn,listBtn,);
     //
     //create list
     let list_content = document.getElementById('list');
@@ -39,14 +36,16 @@ export default (function page_UI() {
     //
     document.body.append(header_main,list_content);
     //
-    addBtn.addEventListener('click',logToDoList)
+
     //
     listBtn.addEventListener('click',goToLists)
     //
     projectBtn.addEventListener('click',goToProjects)
 })()
 
-OnLoad();
+
+//Removes list_content when you first open the page
+goToProjects();
 
 
     
