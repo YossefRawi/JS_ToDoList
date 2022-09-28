@@ -89,6 +89,7 @@ import { format} from 'date-fns'
         //
         delete_btn.addEventListener('click',() =>{
             item_header.parentElement.remove()
+            localStorage.clear();
         });
         //
         complete_btn.addEventListener('click',() =>{
@@ -105,18 +106,17 @@ import { format} from 'date-fns'
     //
     //
     
-    
 
-        return {header,getDesc};
+
+        return {header,getDesc,dateSetter};
+
+        
 
     };
 
 
-let newittem  =createListItem('w','asdasdasdfasdf',format(new Date(),'dd / MMM / yyyy'))
-let newittem_serial = JSON.stringify(newittem)
+    
 
-
-localStorage.setItem('ToDo',newittem_serial)
 
     
 
